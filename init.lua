@@ -3,13 +3,15 @@
 ----------------------------
 
 -- [[ Lazy.nvim ]]
+
 require("config.lazy")
 
 -- [[ Configuration ]]
+
 -- Disable expanding <Tab>
-vim.cmd("set noexpandtab")
+vim.opt.expandtab = false
 -- Set tab width to 2 spaces
-vim.cmd("set tabstop=2")
+vim.opt.tabstop = 2
 -- Set indentation width to 2 spaces
-vim.cmd("set shiftwidth=2")
+vim.opt.shiftwidth = 2
 
