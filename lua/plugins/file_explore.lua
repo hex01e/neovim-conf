@@ -8,7 +8,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		keys = {
-			{ "<leader>\\", "<cmd>Neotree toggle<cr>", desc = "Toggle File Explorer" },
+			{ "<C-\\>", "<cmd>Neotree toggle<cr>", desc = "Toggle File Explorer" },
 			{ "<leader>w", "<cmd>lua require('window-picker').pick_window()<cr>", desc = "Pick window" },
 		},
 	},
