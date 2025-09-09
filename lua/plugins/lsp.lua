@@ -12,6 +12,7 @@ return {
 		opts = {	
 			ensure_installed = {
 				"lua_ls",
+				"pyright",
 				"ts_ls",
 			}
 		},
@@ -29,6 +30,20 @@ return {
 
 			-- Lua
 			lspconfig.lua_ls.setup({})
+			-- Python
+			-- Use Virtial env if exist
+			local function has_venv(settings)
+				local venv_path = vim.fn.getcwd().."/.venv/bin/python"
+				if vim.uv.fs_stat(venv_path) then
+					settings.python = settings.python or {}
+					settings.python.pythonPath = venv_path
+				end
+				return settings
+			end
+			-- Python configs
+			lspconfig.pyright.setup({
+				settings = has_venv({})
+			})
 			-- Js/ts
 			lspconfig.ts_ls.setup({})
 
