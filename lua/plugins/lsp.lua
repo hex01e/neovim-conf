@@ -9,7 +9,7 @@ return {
 	-- Mason lsconfig
 	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {	
+		opts = {
 			ensure_installed = {
 				"lua_ls",
 				"pyright",
@@ -25,11 +25,24 @@ return {
 	-- Nvim lspconfig
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ 'mason-org/mason.nvim', opts = {} },
+			'mason-org/mason-lspconfig.nvim',
+			'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+			-- Useful status updates for LSP.
+			{ 'j-hui/fidget.nvim', opts = {} },
+
+			-- Allows extra capabilities provided by blink.cmp
+			'saghen/blink.cmp',
+		},
 		config = function()
 			local lspconfig = require("lspconfig")
 
 			-- Lua
-			lspconfig.lua_ls.setup({})
+			lspconfig.lua_ls.setup({
+				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+			})
 			-- Python
 			lspconfig.pyright.setup({})
 			-- Js/ts
@@ -41,13 +54,13 @@ return {
 			vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
 
 			-- Show diagnostics as virtual text and underlines
-			vim.diagnostic.config({
-				virtual_text = true,   -- show message inline
-				signs = true,          -- keep the "E"/"W" in the gutter
-				underline = true,      -- underline the text with issues
-				update_in_insert = false,
-				severity_sort = true,
-			})
+			--vim.diagnostic.config({
+				--virtual_text = true,   -- show message inline
+				--signs = true,          -- keep the "E"/"W" in the gutter
+				--underline = true,      -- underline the text with issues
+				--update_in_insert = false,
+				--severity_sort = true,
+			--})
 		end
 	},
 }
