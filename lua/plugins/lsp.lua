@@ -13,6 +13,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"pyright",
+				"ruff",
 				"ts_ls",
 			}
 		},
@@ -37,14 +38,21 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 			-- Lua
 			lspconfig.lua_ls.setup({
 				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+				capabilities = capabilities,
 			})
 			-- Python
-			lspconfig.pyright.setup({})
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
 			-- Js/ts
-			lspconfig.ts_ls.setup({})
+			lspconfig.ts_ls.setup({
+				capabilities = capabilities,
+			})
 
 			-- keymaps
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
