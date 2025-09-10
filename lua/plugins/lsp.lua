@@ -54,13 +54,13 @@ return {
 			vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
 
 			-- Show diagnostics as virtual text and underlines
-			--vim.diagnostic.config({
-				--virtual_text = true,   -- show message inline
-				--signs = true,          -- keep the "E"/"W" in the gutter
-				--underline = true,      -- underline the text with issues
-				--update_in_insert = false,
-				--severity_sort = true,
-			--})
+			vim.diagnostic.config({
+				virtual_text = true,   -- show message inline
+				signs = true,          -- keep the "E"/"W" in the gutter
+				underline = true,      -- underline the text with issues
+				update_in_insert = false,
+				severity_sort = true,
+			})
 		end
 	},
 }
