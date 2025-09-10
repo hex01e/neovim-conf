@@ -21,3 +21,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 -- Highlight the current line
 vim.opt.cursorline = true
+
+-- Disable wraping lines
+vim.opt.wrap = false
