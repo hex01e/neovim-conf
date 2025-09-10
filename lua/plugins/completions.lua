@@ -1,15 +1,5 @@
 -- completion plugis
 return {
-	-- LuaSnip
-	{
-		"L3MON4D3/LuaSnip",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-		},
-		build = "make install_jsregexp",
-	},
-
 	-- cmp core
 	{
 		"hrsh7th/nvim-cmp",
@@ -50,4 +40,16 @@ return {
 			})
 		end,
 	},
+
+	-- LuaSnip
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = {
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
+		},
+		build = "make install_jsregexp",
+	},
+
+
 }
