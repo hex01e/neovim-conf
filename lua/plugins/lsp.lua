@@ -3,7 +3,7 @@ return {
 	-- Mason core
 	{
 		"mason-org/mason.nvim",
-		opts = {}
+		opts = {},
 	},
 
 	-- Mason lsconfig
@@ -15,7 +15,7 @@ return {
 				"pyright",
 				"ruff",
 				"ts_ls",
-			}
+			},
 		},
 		dependencies = {
 			"neovim/nvim-lspconfig",
@@ -27,27 +27,45 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ 'mason-org/mason.nvim', opts = {} },
-			'mason-org/mason-lspconfig.nvim',
-			'WhoIsSethDaniel/mason-tool-installer.nvim',
+			{ "mason-org/mason.nvim", opts = {} },
+			"mason-org/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
-			{ 'j-hui/fidget.nvim', opts = {} },
-
+			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
 
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Lua
 			lspconfig.lua_ls.setup({
-				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspaces = {
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = { enable = false },
+					},
+				},
 				capabilities = capabilities,
 			})
 			-- Python
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
+				settings = {
+					python = {
+						analysis = {
+							typeCheckingMode = "basic", -- or "strict"
+							diagnosticMode = "workspace",
+							stubPath = vim.fn.stdpath("data") .. "/django-stubs", -- optional
+						},
+					},
+				},
 			})
 			-- Js/ts
 			lspconfig.ts_ls.setup({
@@ -55,18 +73,18 @@ return {
 			})
 
 			-- keymaps
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-			vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Info" })
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
 
 			-- Show diagnostics as virtual text and underlines
 			vim.diagnostic.config({
-				virtual_text = true,   -- show message inline
-				signs = true,          -- keep the "E"/"W" in the gutter
-				underline = true,      -- underline the text with issues
+				virtual_text = true, -- show message inline
+				signs = true, -- keep the "E"/"W" in the gutter
+				underline = true, -- underline the text with issues
 				update_in_insert = false,
 				severity_sort = true,
 			})
-		end
+		end,
 	},
 }
