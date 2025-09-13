@@ -12,7 +12,14 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		config = function()
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'lua_ls', 'pyright', 'ts_ls' }
+				ensure_installed = {
+					'lua_ls',
+					'pyright',
+					'ts_ls',
+					'ruff',
+					'html',
+					'cssls'
+				}
 			})
 		end
 	},
@@ -21,15 +28,32 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require('lspconfig')
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 			-- lua
-			lspconfig.lua_ls.setup({})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
 
 			-- python
-			lspconfig.pyright.setup({})
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
 
 			-- js/ts
-			lspconfig.lua_ls.setup({})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+
+			-- HTML
+			lspconfig.html.setup({
+				capabilities = capabilities,
+			})
+
+			-- CSS
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
 
 			-- Keymaps
 			local bufmap = function(mode, lhs, rhs, desc)

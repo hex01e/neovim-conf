@@ -2,10 +2,6 @@
 ---  Created by hex01e   ---
 ----------------------------
 
--- [[ Lazy.nvim ]]
-
-require("config.lazy")
-
 -- [[ Configuration ]]
 
 -- Disable expanding <Tab>
@@ -24,3 +20,8 @@ vim.opt.cursorline = true
 
 -- Disable wraping lines
 vim.opt.wrap = false
+
+
+-- [[ Lazy.nvim ]]
+
+require("config.lazy")
