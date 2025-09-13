@@ -22,6 +22,13 @@ return {
 		config = function()
 			local lspconfig = require('lspconfig')
 
+			-- lua
+			lspconfig.lua_ls.setup({})
+
+			-- python
+			lspconfig.pyright.setup({})
+
+			-- js/ts
 			lspconfig.lua_ls.setup({})
 
 			-- Keymaps
