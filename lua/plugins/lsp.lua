@@ -4,35 +4,49 @@ return {
 		"mason-org/mason.nvim",
 		opts = {},
 		config = function()
-			require('mason').setup()
-		end
+			require("mason").setup()
+		end,
 	},
 	-- Mason lspconfig
 	{
 		"mason-org/mason-lspconfig.nvim",
 		config = function()
-			require('mason-lspconfig').setup({
+			require("mason-lspconfig").setup({
 				ensure_installed = {
-					'lua_ls',
-					'pyright',
-					'ts_ls',
-					'ruff',
-					'html',
-					'cssls'
-				}
+					"lua_ls",
+					"pyright",
+					"ts_ls",
+					"ruff",
+					"html",
+					"cssls",
+				},
 			})
-		end
+		end,
 	},
 	-- LSP core
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local lspconfig = require('lspconfig')
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			local lspconfig = require("lspconfig")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- lua
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						diagnostics = { globals = { "vim" } },
+						workspace = {
+							library = {
+								vim.fn.expand("$VIMRUNTIME/lua"),
+								vim.fn.stdpath("config") .. "/lua",
+							},
+							checkThirdParty = false,
+						},
+						telemetry = { enable = false },
+					},
+				},
 			})
 
 			-- python
@@ -41,7 +55,7 @@ return {
 			})
 
 			-- js/ts
-			lspconfig.lua_ls.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
 
@@ -57,7 +71,9 @@ return {
 
 			-- Keymaps
 			local bufmap = function(mode, lhs, rhs, desc)
-				if desc then desc = "LSP: " .. desc end
+				if desc then
+					desc = "LSP: " .. desc
+				end
 				vim.keymap.set(mode, lhs, rhs, { desc = desc })
 			end
 
@@ -70,7 +86,14 @@ return {
 			bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
 			bufmap("n", "<leader>dp", vim.diagnostic.goto_prev, "Prev diagnostic")
 			bufmap("n", "<leader>dn", vim.diagnostic.goto_next, "Next diagnostic")
-			bufmap("n", "<leader>F", function() vim.lsp.buf.format() end, "Format")
-		end
-	}
+			bufmap("n", "<leader>F", function()
+				vim.lsp.buf.format()
+			end, "Format")
+		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+		},
+	},
 }
