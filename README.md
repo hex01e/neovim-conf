@@ -8,6 +8,14 @@ A fast, batteries-included Neovim setup powered by lazy.nvim. It ships with LSP,
 - Recommended: ripgrep (`rg`) for Telescope live grep
 - Optional: Node.js, Python, and/or system tools your languages require
 
+## Screenshots
+
+<p align="center">
+  <img src=".screenshots/screen1.png" alt="Screenshot 1" width="32%" />
+  <img src=".screenshots/screen2.png" alt="Screenshot 2" width="32%" />
+  <img src=".screenshots/screen3.png" alt="Screenshot 3" width="32%" />
+</p>
+
 ## Installation
 
 ```bash
@@ -15,7 +23,6 @@ A fast, batteries-included Neovim setup powered by lazy.nvim. It ships with LSP,
 mv ~/.config/nvim ~/.config/nvim.bak-$(date +%F)
 
 # Clone this config
-# (If this is not a git repo, copy the folder into ~/.config/nvim)
 # git clone https://github.com/your-username/your-nvim-config ~/.config/nvim
 
 # Start Neovim (plugins will auto-install on first launch)
