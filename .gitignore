@@ -1,3 +1,4 @@
 lazy-lock.json
 .ignore/
 .luarc.json
+lua/plugins/local-plugins.lua
