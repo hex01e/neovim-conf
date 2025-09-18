@@ -23,7 +23,7 @@ A fast, batteries-included Neovim setup powered by lazy.nvim. It ships with LSP,
 mv ~/.config/nvim ~/.config/nvim.bak-$(date +%F)
 
 # Clone this config
-# git clone https://github.com/your-username/your-nvim-config ~/.config/nvim
+git clone https://github.com/your-username/your-nvim-config ~/.config/nvim
 
 # Start Neovim (plugins will auto-install on first launch)
 nvim
