@@ -1,4 +1,4 @@
-## Neovim config
+## My Personnel Neovim config
 A fast, batteries-included Neovim setup powered by lazy.nvim. It ships with LSP, Treesitter, Telescope, Git integration, statusline, notifications, a start screen, and sensible defaults.
 
 ## Requirements
