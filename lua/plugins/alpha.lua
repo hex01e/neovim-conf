@@ -15,13 +15,22 @@ return   {
 			position = 'center'
 		}
 		header.val = {
-			[[ ███╗   ██╗███████╗██╗   ██╗██╗███╗   ███╗ ]],
-			[[ ████╗  ██║██╔════╝██║   ██║██║████╗ ████║ ]],
-			[[ ██╔██╗ ██║█████╗  ██║   ██║██║██╔████╔██║ ]],
-			[[ ██║╚██╗██║██╔══╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
-			[[ ██║ ╚████║███████╗ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
-			[[ ╚═╝  ╚═══╝╚══════╝  ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
-			[[                  Welcome                  ]],
+			[[     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
+			[[     ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
+			[[     ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
+			[[     ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
+			[[     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
+			[[     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
+			[[                           Welcome                         ]],
+		}
+
+		-- Add buttons with correct keybindings and icons
+		theme.section.buttons.val = {
+			theme.button("e", "  󰈞  New file", ":ene <BAR> startinsert <CR>"),
+			theme.button("ff", "  󰈞  Find file", ":Telescope find_files <CR>"),
+			theme.button("fg", "  󰈬  Find text", ":Telescope live_grep <CR>"),
+			theme.button("fb", "  󰈔  Find buffer", ":Telescope buffers <CR>"),
+			theme.button("q", "  󰗼  Quit", ":qa<CR>"),
 		}
 
 		alpha.setup(theme.config)
