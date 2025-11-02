@@ -14,6 +14,7 @@ A fast, batteries-included Neovim setup powered by lazy.nvim. It ships with LSP,
   <img src=".screenshots/screen1.png" alt="Screenshot 1" width="32%" />
   <img src=".screenshots/screen2.png" alt="Screenshot 2" width="32%" />
   <img src=".screenshots/screen3.png" alt="Screenshot 3" width="32%" />
+  <img src=".screenshots/screen4.png" alt="Screenshot 4" width="32%" />
 </p>
 
 ## Installation
@@ -111,6 +112,9 @@ Open Mason UI with:
   - `<leader>hQ` / `<leader>hq`: QF list (all/buffer)
   - `<leader>tb`: Toggle line blame
   - `<leader>tw`: Toggle word diff
+
+- Terminal (floaterm)
+  - `<leader>t`: Toggle the terminal window
 
 ## Editor options (notable)
 
