@@ -3,7 +3,10 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.5',
-		dependences = { 'nvim-lua/plenary.nvim' },
+		dependences = {
+			'nvim-lua/plenary.nvim',
+			'nvim-treesitter/nvim-treesitter',
+		},
 		keys = {
 			{"<leader>ff", "<cmd>Telescope find_files<cr>", mode="n", desc="Find files in cwd"},
 			{"<leader>fg", "<cmd>Telescope live_grep<cr>", mode="n", desc="Live text search across cwd"},
